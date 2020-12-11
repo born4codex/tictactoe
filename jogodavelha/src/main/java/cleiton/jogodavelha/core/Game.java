@@ -1,6 +1,7 @@
 package cleiton.jogodavelha.core;
 
 import cleiton.jogodavelha.Constants;
+import cleiton.jogodavelha.ui.UI;
 
 public class Game {
 	
@@ -10,7 +11,8 @@ public class Game {
 	public void play() {
 		
 		
-		System.out.println("Ola mundo");
+		UI.printGameTitle();
+		UI.readInput("Nome do jogador: ");
 	
 	
 	}
