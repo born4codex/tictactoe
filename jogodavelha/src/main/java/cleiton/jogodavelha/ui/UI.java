@@ -1,25 +1,34 @@
+
 package cleiton.jogodavelha.ui;
+
+import br.com.softblue.commons.io.Console;
 
 /* Classe criada para interação com a interface gráfica, via console */
 
 public class UI {
 	
-	void printText(String text) {
+	public static void printText(String text) {
 		System.out.println(text);
 	}
 
-	void printTextWithNoNewLine(String text) {
+	public static void printTextWithNoNewLine(String text) {
 		System.out.print(text);
 	}
 	
-	void printNewLine() {
+	public static void printNewLine() {
 		System.out.println();
 	}
 	
-	void printGameTitle() {
+	public static void printGameTitle() {
 		printText("=================");
 		printText("/ JOGO DA VELHA /");
 		printText("=================");
 		printNewLine();
+	}
+	
+	public static String readInput(String text) {
+		printTextWithNoNewLine(text + " ");
+		return Console.readString();
+		
 	}
 }
