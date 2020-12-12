@@ -5,7 +5,14 @@ import cleiton.jogodavelha.ui.UI;
 
 public class Board {
 	
-	char [] [] matrix = new char [Constants.BOARD_SIZE][Constants.BOARD_SIZE]; 
+	char [] [] matrix; 
+	
+	public Board() {    /*Criando construtor */
+		matrix = new char [Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		clear();
+	
+	}
+	
 	
 	public void clear() { /* Limpa o tabuleiro paro o start do jogo */
 		for (int i = 0; i < matrix.length; i++) {
@@ -34,13 +41,24 @@ public class Board {
 	}
 	
 	public boolean isFull() {
-		
-		return false; //Depois corrigir retrno deste metodo
-		
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				if (matrix[i][j] == ' ') {
+				return false; //Depois corrigir retrno deste metodo
+				}
+			}
+		}
+		return true;
 	}
 	
-	 public void play() {
+	 public boolean play(Player player, Move move) {
+		 int i = move.i;
+		 int j = move.j;
 		
+		 matrix[i][j] = player.symbol;
+		 
+		 //TODO  Checar se o jogador ganhou
+		 return false;
 		
 	}
 	
