@@ -6,6 +6,6 @@ public class Constants {
 	
 	public static final char[] SYMBOL_PLAYERS = { 'x' , 'O' };
 	
-	
+
 	
 }

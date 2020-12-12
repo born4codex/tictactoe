@@ -12,7 +12,11 @@ public class Game {
 		
 		
 		UI.printGameTitle();
-		UI.readInput("Nome do jogador: ");
+		
+		board.clear();
+		board.print();
+		
+		//UI.readInput("Nome do jogador: ");
 	
 	
 	}
