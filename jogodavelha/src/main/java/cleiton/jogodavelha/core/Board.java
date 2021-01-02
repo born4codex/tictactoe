@@ -103,7 +103,7 @@ public class Board {
 	private boolean checkDiagonal1(Player player) {
 		char symbol = player.getSymbol();
 
-		for (int i; i < Constants.BOARD_SIZE; i++) {
+		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			if (matrix[i][i] != symbol) {
 				return false;
 			}
