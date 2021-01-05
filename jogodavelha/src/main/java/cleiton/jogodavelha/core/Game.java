@@ -20,13 +20,24 @@ public class Game {
 	}
 
 	private Player createPlayer(int index) {
-		String name = UI.readInput("Jogador " + (index + 1) + "=>"); 
+		String name = UI.readInput("Jogador " + (index + 1) + "=>");
 		char symbol = Constants.SYMBOL_PLAYERS[index];
 		Player player = new Player(name, symbol, board);
 
 		UI.printText("O jogador '" + name + "' vai usar o simbolo '" + symbol + "'");
 
 		return player;
+	}
+
+	private Player nextPlayer() {
+		/*
+		 * currentPlayerIndex++;
+		 * 
+		 * if(currentPlayerIndex >= players.length) { currentPlayerIndex = 0; }
+		 */
+
+		currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+		return players[currentPlayerIndex];
 	}
 
 }
