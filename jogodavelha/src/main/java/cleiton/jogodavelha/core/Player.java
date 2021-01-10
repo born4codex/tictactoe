@@ -3,14 +3,12 @@ package cleiton.jogodavelha.core;
 import cleiton.jogodavelha.ui.UI;
 
 public class Player {
-	
+
 	private String name;
 	private char symbol;
 	private Board board;
-	
 
-	
-	 public Player(String name, char symbol, Board board) {
+	public Player(String name, char symbol, Board board) {
 		this.name = name;
 		this.symbol = symbol;
 		this.board = board;
@@ -19,13 +17,13 @@ public class Player {
 	private Move inputMove() {
 		String moveStr = UI.readInput("Jogador '" + name + "' =>");
 		return new Move(moveStr);
-		
+
 	}
-	
-	 public void play() {
+
+	public boolean play() {
 		Move move = inputMove();
-		board.play(this, move);
-		
+		return board.play(this, move);
+
 	}
 
 	public String getName() {
@@ -39,7 +37,5 @@ public class Player {
 	public Board getBoard() {
 		return board;
 	}
-	 
-	 
 
 }
