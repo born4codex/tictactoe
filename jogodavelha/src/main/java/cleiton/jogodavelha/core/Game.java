@@ -24,7 +24,13 @@ public class Game {
 		while (!gameEnded) {
 			board.print();
 
-			boolean sequenceFound = currentPlayer.play();
+			boolean sequenceFound;
+			try {
+				sequenceFound = currentPlayer.play();
+			} catch (InvalidMoveException e) {
+				UI.printText("Erro: " + e.getMessage());
+				continue;
+			}
 
 			if (sequenceFound) {
 				gameEnded = true;
@@ -36,7 +42,7 @@ public class Game {
 
 			currentPlayer = nextPlayer();
 		}
-		if (winner = null) {
+		if (winner == null) {
 			UI.printText("O Jogo terminou empatado");
 		} else {
 			UI.printText("O jogador '" + winner.getName() + "' venceu o jogo!");

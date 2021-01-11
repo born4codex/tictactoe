@@ -14,13 +14,13 @@ public class Player {
 		this.board = board;
 	}
 
-	private Move inputMove() {
+	private Move inputMove() throws InvalidMoveException {
 		String moveStr = UI.readInput("Jogador '" + name + "' =>");
 		return new Move(moveStr);
 
 	}
 
-	public boolean play() {
+	public boolean play() throws InvalidMoveException {
 		Move move = inputMove();
 		return board.play(this, move);
 
