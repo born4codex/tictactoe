@@ -1,6 +1,10 @@
 package cleiton.jogodavelha.core;
 
+import java.io.IOException;
+
 import cleiton.jogodavelha.Constants;
+import cleiton.jogodavelha.score.FileScoreManager;
+import cleiton.jogodavelha.score.ScoreManager;
 import cleiton.jogodavelha.ui.UI;
 
 public class Game {
@@ -8,8 +12,10 @@ public class Game {
 	Board board = new Board();
 	Player[] players = new Player[Constants.SYMBOL_PLAYERS.length];
 	private int currentPlayerIndex = -1;
+	private ScoreManager scoreManager;
 
-	public void play() {
+	public void play() throws IOException {
+		scoreManager = createScoreManager();
 
 		UI.printGameTitle();
 
@@ -46,6 +52,8 @@ public class Game {
 			UI.printText("O Jogo terminou empatado");
 		} else {
 			UI.printText("O jogador '" + winner.getName() + "' venceu o jogo!");
+
+			scoreManager.saveScore(winner);
 		}
 
 		board.print();
@@ -57,6 +65,13 @@ public class Game {
 		String name = UI.readInput("Jogador " + (index + 1) + "=>");
 		char symbol = Constants.SYMBOL_PLAYERS[index];
 		Player player = new Player(name, symbol, board);
+
+		Integer score = scoreManager.getScore(player);
+
+		if(score != null)	{
+			UI.printText("O jogador '" + player.getName() + "' ja possui " + score + " vitória(s)!");
+
+		}
 
 		UI.printText("O jogador '" + name + "' vai usar o simbolo '" + symbol + "'");
 
@@ -72,6 +87,10 @@ public class Game {
 
 		currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 		return players[currentPlayerIndex];
+	}
+
+	private ScoreManager createScoreManager() throws IOException {
+		return new FileScoreManager();
 	}
 
 }
